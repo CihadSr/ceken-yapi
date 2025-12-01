@@ -2,230 +2,464 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ÇEKEN İNŞAAT - Premium Yapı Çözümleri</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>ÇEKEN İNŞAAT | Karaburun Yapı, Tadilat ve Demir Tasarım</title>
+    <meta name="description" content="İzmir Karaburun'da profesyonel inşaat, anahtar teslim tadilat ve özel demir/ferforje tasarım hizmetleri. Kalite ve güvenin adresi Çeken İnşaat.">
+    <meta property="og:title" content="ÇEKEN İNŞAAT - Hayallerinizi İnşa Ediyoruz">
+    <meta property="og:description" content="Karaburun'da lüks tadilat, inşaat ve demir işleri. Projelerimizi inceleyin.">
+    <meta property="og:image" content="./assets/kapak.jpg">
+    <meta name="theme-color" content="#cba367">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- GENEL AYARLAR --- */
-        :root { --bg-dark: #121212; --accent: #cba367; --text-light: #f4f4f4; --text-muted: #a0a0a0; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* --- 1. TEMEL AYARLAR & DEĞİŞKENLER --- */
+        :root {
+            --bg-dark: #121212;
+            --bg-lighter: #1a1a1a;
+            --accent: #cba367; /* Altın */
+            --accent-glow: rgba(203, 163, 103, 0.4);
+            --text-light: #f4f4f4;
+            --text-muted: #a0a0a0;
+            --transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-dark); color: var(--text-light); line-height: 1.7; }
-        h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--bg-dark); 
+            color: var(--text-light); 
+            line-height: 1.7; 
+            overflow-x: hidden; 
+        }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
 
-        /* HEADER */
+        /* Scrollbar Tasarımı */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* --- 2. HEADER & NAVİGASYON --- */
         header {
-            background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(10px);
-            padding: 1.2rem 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(18, 18, 18, 0.85); backdrop-filter: blur(20px);
+            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
             position: sticky; top: 0; z-index: 1000;
-            border-bottom: 1px solid rgba(203, 163, 103, 0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             transition: 0.3s;
         }
-        .logo { font-size: 1.8rem; font-weight: 700; color: var(--text-light); letter-spacing: 2px; text-transform: uppercase; }
+        .logo { font-size: 1.6rem; font-weight: 700; color: var(--text-light); letter-spacing: 1px; text-transform: uppercase; }
         .logo span { color: var(--accent); }
 
-        /* Masaüstü Arama Butonu Stili */
-        .outline-btn { padding: 10px 25px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; font-weight: 500; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
-        .outline-btn:hover { background: var(--accent); color: #000; }
-        .outline-btn i { font-size: 1rem; }
-
-        /* HERO */
-        .hero { height: 85vh; position: relative; display: flex; align-items: center; justify-content: flex-start; padding: 0 8%; overflow: hidden; }
-        .hero-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; filter: brightness(0.4); }
-        .hero-content { max-width: 800px; border-left: 5px solid var(--accent); padding-left: 30px; position: relative; z-index: 2; }
-        .hero-content h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 25px; color: var(--text-light); }
-        .hero-content span.highlight { color: var(--accent); font-style: italic; }
-        .hero-content p { font-size: 1.3rem; color: #ddd; margin-bottom: 40px; font-weight: 300; }
-
-        /* BUTONLAR */
-        .gold-btn { display: inline-block; padding: 15px 45px; background: linear-gradient(45deg, var(--accent), #d4af37); color: #000; font-weight: 600; text-decoration: none; letter-spacing: 1px; border-radius: 2px; transition: 0.4s ease; box-shadow: 0 5px 15px rgba(203, 163, 103, 0.3); }
-        .gold-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(203, 163, 103, 0.6); }
-
-        /* PORTFOLYO */
-        .portfolio { padding: 100px 8%; background: var(--bg-dark); }
-        .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
-        .section-title h2 { font-size: 3rem; color: var(--text-light); margin-bottom: 10px; }
-        .section-title span { color: var(--accent); display: block; font-size: 1rem; letter-spacing: 4px; font-weight: 600; text-transform: uppercase;}
-        .filter-tabs { display: flex; gap: 30px; }
-        .filter-tab { background: transparent; border: none; color: var(--text-muted); font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.1rem; cursor: pointer; padding-bottom: 10px; position: relative; transition: 0.3s; }
-        .filter-tab::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--accent); transition: 0.3s ease; }
-        .filter-tab.active, .filter-tab:hover { color: var(--accent); }
-        .filter-tab.active::after { width: 100%; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 30px; }
-        .gallery-item { position: relative; height: 320px; overflow: hidden; border-radius: 4px; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); filter: grayscale(10%); }
-        .gallery-item:hover img { transform: scale(1.1); filter: grayscale(0%); }
-        .item-details { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.2)); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; opacity: 0; transition: 0.4s ease; }
-        .gallery-item:hover .item-details { opacity: 1; }
-        .item-details h3 { color: var(--accent); font-size: 1.5rem; margin-bottom: 5px; transform: translateY(20px); transition: 0.4s 0.1s; }
-        .item-details p { color: var(--text-light); font-size: 0.95rem; transform: translateY(20px); transition: 0.4s 0.2s; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 10px; display: inline-block; }
-        .gallery-item:hover h3, .gallery-item:hover p { transform: translateY(0); }
-
-        footer { background: #080808; padding: 80px 8%; text-align: center; border-top: 1px solid rgba(203, 163, 103, 0.2); margin-top: 50px; }
-        .footer-content .logo { font-size: 2.5rem; margin-bottom: 30px; display: inline-block;}
-        .footer-info p { color: var(--text-muted); margin-bottom: 10px; font-size: 1.1rem; }
-        .footer-info i { color: var(--accent); margin-right: 15px; width: 20px;}
-        .copyright { margin-top: 50px; font-size: 0.8rem; color: #555; }
-        .whatsapp-float { position: fixed; bottom: 40px; right: 40px; background: linear-gradient(45deg, #25d366, #128C7E); color: #fff; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; box-shadow: 0 10px 20px rgba(0,0,0,0.4); z-index: 1001; transition: 0.3s; border: 2px solid rgba(255,255,255,0.1); text-decoration: none; }
-        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(37, 211, 102, 0.5); }
-
-        /* --- MOBİL UYUM İYİLEŞTİRMELERİ (BURASI DEĞİŞTİ) --- */
-        @media (max-width: 768px) {
-            /* Header'ı sıkışıklıktan kurtar */
-            header { padding: 0.8rem 5%; }
-            .logo { font-size: 1.5rem; }
-
-            /* MOBİL ARAMA BUTONU DÖNÜŞÜMÜ */
-            /* Kutuyu kaldır, yuvarlak ikon yap */
-            .outline-btn.mobile-call-btn {
-                padding: 0;
-                width: 45px;
-                height: 45px;
-                border-radius: 50%;
-                background: var(--accent); /* Altın zemin */
-                color: #000; /* Siyah ikon */
-                border: none;
-                justify-content: center;
-            }
-            /* Mobilde numarayı gizle */
-            .outline-btn .desk-text { display: none; }
-            /* İkonu büyüt */
-            .outline-btn i { font-size: 1.2rem; }
-
-            /* Hero Başlıklarını Küçült */
-            .hero-content h1 { font-size: 2.2rem; }
-            .hero-content p { font-size: 1rem; }
-            
-            /* Galeri Düzeni */
-            .gallery-grid { grid-template-columns: 1fr; }
-            .section-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-            
-            /* Filtre Tabları (Kaydırmalı) */
-            .filter-tabs { width: 100%; justify-content: flex-start; overflow-x: auto; padding-bottom: 15px; white-space: nowrap; }
-            .filter-tabs::-webkit-scrollbar { display: none; }
-            .filter-tab { background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 20px; font-size: 0.9rem; flex-shrink: 0; }
-            .filter-tab.active { background: var(--accent); color: #000; }
-            .filter-tab::after { display: none; }
-            
-            /* WhatsApp butonu mobilde biraz daha küçük olsun */
-            .whatsapp-float { width: 60px; height: 60px; font-size: 30px; bottom: 25px; right: 25px; }
-            .portfolio { padding: 60px 5%; }
+        /* Masaüstü İletişim Butonu */
+        .call-btn { 
+            padding: 10px 25px; border: 1px solid var(--accent); color: var(--accent); 
+            border-radius: 50px; text-decoration: none; font-weight: 500; font-size: 0.9rem;
+            transition: 0.3s; display: flex; align-items: center; gap: 10px;
         }
+        .call-btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 15px var(--accent-glow); }
+
+        /* --- 3. HERO (GİRİŞ) BÖLÜMÜ --- */
+        .hero { 
+            height: 90vh; position: relative; display: flex; align-items: center; 
+            padding: 0 8%; overflow: hidden;
+        }
+        .hero-bg { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            object-fit: cover; z-index: -1; filter: brightness(0.35);
+            animation: slowZoom 30s infinite alternate;
+        }
+        @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.15); } }
+
+        .hero-content { 
+            max-width: 850px; position: relative; z-index: 2; 
+            opacity: 0; transform: translateY(30px); animation: fadeUp 1s forwards 0.5s;
+        }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+        .hero-title { 
+            font-size: 4rem; line-height: 1.1; margin-bottom: 25px; color: #fff; 
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .hero-title span { color: var(--accent); font-style: italic; }
+        
+        .hero-desc { 
+            font-size: 1.2rem; color: #ccc; margin-bottom: 40px; font-weight: 300; 
+            padding-left: 20px; border-left: 3px solid var(--accent);
+        }
+
+        .cta-btn { 
+            display: inline-block; padding: 16px 45px; 
+            background: linear-gradient(135deg, var(--accent), #b88a4d); 
+            color: #000; font-weight: 700; text-decoration: none; letter-spacing: 1px; 
+            border-radius: 4px; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .cta-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 30px var(--accent-glow); }
+
+        /* --- 4. HİZMETLER & "NEDEN BİZ" (YENİ BÖLÜM) --- */
+        .services { padding: 80px 8%; background: var(--bg-lighter); }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .service-card { 
+            background: var(--bg-dark); padding: 40px; border-radius: 8px; 
+            border: 1px solid rgba(255,255,255,0.05); transition: 0.4s;
+            position: relative; overflow: hidden;
+        }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+        .service-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
+        .service-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* --- 5. PORTFOLYO --- */
+        .portfolio { padding: 100px 5%; background: var(--bg-dark); }
+        
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header span { color: var(--accent); letter-spacing: 3px; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; display: block; margin-bottom: 10px; }
+        .section-header h2 { font-size: 3rem; color: #fff; }
+
+        /* Modern Filtreler */
+        .filter-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
+        .filter-tab { 
+            background: rgba(255,255,255,0.05); border: none; color: #aaa; 
+            padding: 10px 25px; border-radius: 50px; cursor: pointer; transition: 0.3s; 
+            font-size: 0.95rem; font-weight: 500;
+        }
+        .filter-tab.active, .filter-tab:hover { background: var(--accent); color: #000; box-shadow: 0 0 15px var(--accent-glow); }
+
+        /* Galeri Izgarası */
+        .gallery-grid { 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; 
+        }
+        .gallery-item { 
+            position: relative; aspect-ratio: 1/1; overflow: hidden; 
+            border-radius: 6px; cursor: pointer; background: #222;
+        }
+        .gallery-item img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            transition: transform 0.6s var(--transition); opacity: 0; 
+        }
+        /* Resim yüklendiğinde JS ile opacity 1 olacak */
+        .gallery-item img.loaded { opacity: 1; }
+
+        .gallery-item:hover img { transform: scale(1.1); }
+        
+        .item-overlay { 
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 25px;
+            opacity: 0; transition: 0.3s;
+        }
+        .gallery-item:hover .item-overlay { opacity: 1; }
+        .item-overlay h3 { color: var(--accent); font-size: 1.2rem; transform: translateY(10px); transition: 0.3s 0.1s; }
+        .item-overlay p { color: #ddd; font-size: 0.9rem; transform: translateY(10px); transition: 0.3s 0.2s; }
+        .gallery-item:hover .item-overlay h3, .gallery-item:hover .item-overlay p { transform: translateY(0); }
+
+        /* --- 6. GELİŞMİŞ LIGHTBOX (POPUP) --- */
+        .lightbox {
+            display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.96); backdrop-filter: blur(10px);
+            justify-content: center; align-items: center; flex-direction: column;
+        }
+        .lightbox img { 
+            max-width: 90%; max-height: 80vh; border-radius: 4px; 
+            box-shadow: 0 0 30px rgba(0,0,0,0.5); border: 1px solid #333;
+        }
+        .lightbox-caption { color: var(--accent); margin-top: 20px; font-size: 1.1rem; text-align: center; }
+        
+        /* Kontrol Butonları (İleri/Geri) */
+        .lb-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            color: #fff; font-size: 2rem; cursor: pointer; padding: 20px;
+            background: rgba(255,255,255,0.05); border-radius: 50%;
+            transition: 0.3s; user-select: none;
+        }
+        .lb-btn:hover { background: var(--accent); color: #000; }
+        .lb-prev { left: 20px; }
+        .lb-next { right: 20px; }
+        .lb-close { position: absolute; top: 20px; right: 30px; font-size: 2.5rem; cursor: pointer; color: #fff; transition: 0.3s;}
+        .lb-close:hover { color: var(--accent); transform: rotate(90deg); }
+
+        /* --- 7. FOOTER --- */
+        footer { 
+            background: #0a0a0a; padding: 60px 8%; text-align: center; border-top: 1px solid #222; 
+        }
+        .footer-logo { font-size: 2rem; font-weight: bold; color: #fff; margin-bottom: 20px; display: inline-block; }
+        .footer-logo span { color: var(--accent); }
+        .footer-links p { margin: 10px 0; color: #888; }
+        .footer-links i { color: var(--accent); margin-right: 10px; }
+
+        /* --- 8. MOBİL UYUM DÜZENLEMELERİ --- */
+        @media (max-width: 768px) {
+            header { padding: 0.8rem 5%; }
+            .logo { font-size: 1.4rem; }
+            
+            /* Mobil Arama İkonu */
+            .call-btn { 
+                padding: 0; width: 45px; height: 45px; border-radius: 50%; 
+                background: var(--accent); color: #000; border: none; justify-content: center;
+            }
+            .call-btn span { display: none; }
+            .call-btn i { font-size: 1.2rem; }
+
+            .hero-title { font-size: 2.5rem; }
+            .hero-desc { font-size: 1rem; border: none; padding-left: 0; }
+            
+            /* Mobilde 2 sütunlu galeri */
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .item-overlay { display: none; } /* Mobilde yazı kalabalığı olmasın */
+            
+            /* Lightbox Butonları Mobilde Kenarlara Yapışsın */
+            .lb-prev { left: 5px; } 
+            .lb-next { right: 5px; }
+            .lb-btn { padding: 10px; background: rgba(0,0,0,0.5); font-size: 1.5rem; }
+
+            .filter-tabs { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 10px; }
+            .filter-tab { flex-shrink: 0; font-size: 0.85rem; padding: 8px 18px; }
+            
+            /* Animasyonları mobilde hafiflet */
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+
+        /* Scroll Animasyonu İçin Class */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s var(--transition); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* WhatsApp */
+        .whatsapp-float { 
+            position: fixed; bottom: 30px; right: 30px; background: #25d366; 
+            color: #fff; width: 60px; height: 60px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; font-size: 32px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4); z-index: 999; text-decoration: none; 
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo">ÇEKEN<span>İNŞAAT</span></div>
-        <a href="tel:+905077424573" class="outline-btn mobile-call-btn">
-            <i class="fas fa-phone"></i> 
-            <span class="desk-text">0507 742 45 73</span>
+        <a href="tel:+905077424573" class="call-btn">
+            <i class="fas fa-phone"></i> <span>0507 742 45 73</span>
         </a>
     </header>
 
     <section class="hero">
-        <img id="hero-bg" class="hero-bg-img" src="./assets/kapak.jpg" alt="Kapak Resmi">
+        <img id="hero-bg" class="hero-bg" src="./assets/kapak.jpg" alt="Çeken İnşaat Kapak">
         <div class="hero-content">
-            <h1>Karaburun'da Estetik <br> <span class="highlight">ve Güvenin İmzası.</span></h1>
-            <p>ÇEKEN İNŞAAT güvencesiyle; kişiye özel demir tasarım, lüks tadilat ve anahtar teslim inşaat projeleri.</p>
-            <a href="#portfolyo" class="gold-btn">Projeleri İnceleyin</a>
+            <h1 class="hero-title">Karaburun'da <br><span>Güvenin İmzası.</span></h1>
+            <p class="hero-desc">Hayallerinizdeki yapıyı; estetik, sağlamlık ve usta işçilikle gerçeğe dönüştürüyoruz.</p>
+            <a href="#portfolyo" class="cta-btn">Projeleri İncele</a>
+        </div>
+    </section>
+
+    <section class="services reveal">
+        <div class="grid-3">
+            <div class="service-card">
+                <i class="fas fa-hammer"></i>
+                <h3>Anahtar Teslim İnşaat</h3>
+                <p>Temelden çatıya, kaba ve ince tüm inşaat süreçlerinizi profesyonel ekibimizle yönetiyoruz.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-drafting-compass"></i>
+                <h3>Özel Demir Tasarım</h3>
+                <p>Mekanınıza değer katan estetik ferforje, kapı, korkuluk ve çelik konstrüksiyon çözümleri.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-paint-roller"></i>
+                <h3>Lüks Tadilat</h3>
+                <p>Evinizi baştan yaratıyoruz. Mutfak, banyo ve komple tadilatta modern dokunuşlar.</p>
+            </div>
         </div>
     </section>
 
     <section id="portfolyo" class="portfolio">
-        <div class="section-header">
-            <div class="section-title">
-                <span>ÇEKEN İNŞAAT FARKIYLA</span>
-                <h2>Seçkin Projeler</h2>
-            </div>
-            <div class="filter-tabs">
-                <button class="filter-tab active" onclick="filterGallery('all', this)">Tümü</button>
-                <button class="filter-tab" onclick="filterGallery('demir', this)">Demir & Ferforje</button>
-                <button class="filter-tab" onclick="filterGallery('tadilat', this)">Tadilat</button>
-                <button class="filter-tab" onclick="filterGallery('insaat', this)">İnşaat</button>
-            </div>
+        <div class="section-header reveal">
+            <span>REFERANSLARIMIZ</span>
+            <h2>Tamamlanan Projeler</h2>
+        </div>
+
+        <div class="filter-tabs reveal">
+            <button class="filter-tab active" onclick="filterGallery('all', this)">Tümü</button>
+            <button class="filter-tab" onclick="filterGallery('demir', this)">Demir & Ferforje</button>
+            <button class="filter-tab" onclick="filterGallery('tadilat', this)">Tadilat</button>
+            <button class="filter-tab" onclick="filterGallery('insaat', this)">İnşaat</button>
         </div>
 
         <div class="gallery-grid" id="gallery-container"></div>
     </section>
 
     <footer>
-        <div class="footer-content">
-            <div class="logo">ÇEKEN<span>İNŞAAT</span></div>
-            <div class="footer-info">
-                <p><i class="fas fa-map-marker-alt"></i> İzmir, Karaburun</p>
-                <p><i class="fas fa-phone"></i> 0507 742 45 73</p>
-                <p><i class="fas fa-envelope"></i> info@cekeninsaat.com</p>
-            </div>
+        <div class="footer-logo">ÇEKEN<span>İNŞAAT</span></div>
+        <div class="footer-links">
+            <p><i class="fas fa-map-marker-alt"></i> İzmir, Karaburun</p>
+            <p><i class="fas fa-phone"></i> 0507 742 45 73</p>
+            <p><i class="fas fa-envelope"></i> info@cekeninsaat.com</p>
         </div>
-        <div class="copyright">
-            <p>&copy; 2025 ÇEKEN İNŞAAT - Tüm Hakları Saklıdır.</p>
-        </div>
+        <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.4;">&copy; 2025 Tüm Hakları Saklıdır.</p>
     </footer>
 
-    <a href="https://wa.me/905077424573" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/905077424573" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <div id="lightbox" class="lightbox">
+        <span class="lb-close" onclick="closeLightbox()">&times;</span>
+        <div class="lb-btn lb-prev" onclick="changeImage(-1)"><i class="fas fa-chevron-left"></i></div>
+        <div class="lb-btn lb-next" onclick="changeImage(1)"><i class="fas fa-chevron-right"></i></div>
+        <img id="lb-img" src="" alt="Büyük Resim">
+        <div id="lb-caption" class="lightbox-caption"></div>
+    </div>
+
     <script>
-        // 1. KAPAK FOTOĞRAFI MOTORU
+        // --- 1. KAPAK FOTOĞRAFI YÜKLEYİCİ ---
         const heroImg = document.getElementById('hero-bg');
-        function tryLoadHero(attempt = 0) {
-            const extensions = ['.jpg', '.jpeg', '.JPG', '.JPEG', '.png'];
-            if (attempt < extensions.length) {
-                const nextExt = extensions[attempt];
-                if (attempt > 0) heroImg.src = `./assets/kapak${nextExt}`;
-                heroImg.onerror = function() { tryLoadHero(attempt + 1); };
+        function loadHero(attempt=0) {
+            const exts = ['.jpg', '.jpeg', '.JPG', '.JPEG', '.png'];
+            if(attempt < exts.length) {
+                if(attempt > 0) heroImg.src = `./assets/kapak${exts[attempt]}`;
+                heroImg.onerror = () => loadHero(attempt+1);
             }
         }
-        tryLoadHero(0);
+        loadHero();
 
-        // 2. GALERİ FOTOĞRAF MOTORU (78 ADET)
+        // --- 2. GALERİ OLUŞTURUCU (78 Fotoğraf) ---
         const container = document.getElementById('gallery-container');
-        const totalPhotos = 78; 
+        const totalPhotos = 78;
+        
+        // Bu dizi, şu an ekranda görünen resimlerin listesini tutacak (Lightbox için)
+        let currentVisibleImages = []; 
+        let currentImageIndex = 0;
 
-        window.handleGalleryError = function(img, index, attempt = 0) {
-            const extensions = ['.jpg', '.jpeg', '.JPG', '.JPEG', '.png'];
-            if (attempt < extensions.length - 1) {
-                const nextExt = extensions[attempt + 1];
-                img.src = `./assets/1 (${index})${nextExt}`;
-                img.onerror = function() { handleGalleryError(img, index, attempt + 1); };
+        // Galeri Yükleme Hatası Yönetimi
+        window.handleError = function(img, index, attempt=0) {
+            const exts = ['.jpg', '.jpeg', '.JPG', '.JPEG', '.png'];
+            if(attempt < exts.length - 1) {
+                img.src = `./assets/1 (${index})${exts[attempt+1]}`;
+                img.onerror = () => handleError(img, index, attempt+1);
             } else {
-                img.closest('.gallery-item').remove();
+                img.closest('.gallery-item').remove(); // Bulunamazsa sil
             }
         };
 
-        for (let i = 2; i <= totalPhotos; i++) {
-            let category = 'insaat'; let label = 'Anahtar Teslim İnşaat';
-            if (i <= 22) { category = 'demir'; label = 'Demir & Ferforje'; } 
-            else if (i <= 44) { category = 'tadilat'; label = 'Tadilat & Dekorasyon'; }
-            
-            const fileName = `1 (${i}).jpg`; 
+        // Resim yüklendiğinde "loaded" classı ekle (Fade-in efekti için)
+        window.imageLoaded = function(img) {
+            img.classList.add('loaded');
+        };
+
+        // DOM Oluşturma
+        for(let i=2; i<=totalPhotos; i++) {
+            let cat = 'insaat'; let lbl = 'İnşaat Projesi';
+            if(i<=22){ cat='demir'; lbl='Demir & Ferforje'; }
+            else if(i<=44){ cat='tadilat'; lbl='Lüks Tadilat'; }
+
             const html = `
-                <div class="gallery-item ${category}">
-                    <img src="./assets/${fileName}" loading="lazy" alt="Proje ${i}" onerror="handleGalleryError(this, ${i})">
-                    <div class="item-details"><h3>Proje No: ${i}</h3><p>${label}</p></div>
+                <div class="gallery-item ${cat}" onclick="openLightbox(${i})">
+                    <img src="./assets/1 (${i}).jpg" loading="lazy" alt="${lbl}" 
+                         onerror="handleError(this, ${i})" onload="imageLoaded(this)">
+                    <div class="item-overlay">
+                        <h3>Proje ${i}</h3>
+                        <p>${lbl}</p>
+                    </div>
                 </div>
             `;
             container.innerHTML += html;
         }
 
+        // --- 3. FİLTRELEME ---
         function filterGallery(cat, btn) {
+            // Buton aktifliği
             document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+
+            // Gösterme/Gizleme
             const items = document.querySelectorAll('.gallery-item');
             items.forEach(item => {
-                item.style.opacity = '0'; item.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    if (cat === 'all' || item.classList.contains(cat)) {
-                        item.style.display = 'block';
-                        setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 50);
-                    } else { item.style.display = 'none'; }
-                }, 300);
+                if(cat === 'all' || item.classList.contains(cat)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
             });
         }
+
+        // --- 4. GELİŞMİŞ LIGHTBOX (İLERİ/GERİ) ---
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lb-img');
+        const lbCaption = document.getElementById('lb-caption');
+
+        function openLightbox(index) {
+            // Şu an görünür olan resimleri topla (Filtreye göre değişir)
+            const allItems = Array.from(document.querySelectorAll('.gallery-item'));
+            // Sadece display:block (görünür) olanları al
+            currentVisibleImages = allItems.filter(item => item.style.display !== 'none');
+            
+            // Tıklanan resmin bu listedeki sırasını bul
+            // (Proje numarasını text içeriğinden buluyoruz)
+            currentImageIndex = currentVisibleImages.findIndex(item => item.querySelector('h3').innerText.includes(index));
+            
+            updateLightbox();
+            lightbox.style.display = 'flex';
+        }
+
+        function updateLightbox() {
+            if(currentImageIndex < 0) return; // Hata koruması
+            
+            const currentItem = currentVisibleImages[currentImageIndex];
+            const imgSrc = currentItem.querySelector('img').src;
+            const imgText = currentItem.querySelector('p').innerText;
+            const imgTitle = currentItem.querySelector('h3').innerText;
+
+            lbImg.src = imgSrc;
+            lbCaption.innerHTML = `${imgTitle} - ${imgText}`;
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            // Başa veya sona gelirse döngüye sok
+            if (currentImageIndex >= currentVisibleImages.length) currentImageIndex = 0;
+            if (currentImageIndex < 0) currentImageIndex = currentVisibleImages.length - 1;
+            
+            updateLightbox();
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+        }
+
+        // Klavye Kontrolü (Sağ/Sol ok tuşları)
+        document.addEventListener('keydown', function(e) {
+            if(lightbox.style.display === 'flex') {
+                if(e.key === 'ArrowRight') changeImage(1);
+                if(e.key === 'ArrowLeft') changeImage(-1);
+                if(e.key === 'Escape') closeLightbox();
+            }
+        });
+
+        // Dışarı tıklayınca kapat
+        lightbox.addEventListener('click', e => {
+            if(e.target === lightbox) closeLightbox();
+        });
+
+        // --- 5. SCROLL ANIMASYONLARI (REVEAL) ---
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for(var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if(elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        // Sayfa yüklenince bir kere çalıştır
+        reveal();
+
     </script>
 </body>
 </html>
