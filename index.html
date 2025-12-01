@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ÇEKEN İNŞAAT - Premium Yapı Çözümleri</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -12,7 +11,6 @@
         /* --- GENEL AYARLAR --- */
         :root {
             --bg-dark: #121212;
-            --bg-card: #1e1e1e;
             --accent: #cba367;
             --text-light: #f4f4f4;
             --text-muted: #a0a0a0;
@@ -46,7 +44,7 @@
         .logo { font-size: 1.8rem; font-weight: 700; color: var(--text-light); letter-spacing: 2px; text-transform: uppercase; }
         .logo span { color: var(--accent); }
 
-        /* HERO */
+        /* HERO (YENİ SİSTEM: Arka plan resmi CSS'den kaldırıldı) */
         .hero {
             height: 85vh;
             position: relative;
@@ -54,31 +52,28 @@
             align-items: center;
             justify-content: flex-start;
             padding: 0 8%;
-            /* Arka plan görseli */
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.6)), url('./assets/1 (1).jpg'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            overflow: hidden; /* Resim taşmasın */
+        }
+
+        /* Yeni Akıllı Arka Plan Resmi */
+        .hero-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Yazıların arkasında kalması için */
+            filter: brightness(0.4); /* Yazılar okunsun diye karartma */
         }
         
-        .hero-content { max-width: 800px; border-left: 5px solid var(--accent); padding-left: 30px; }
+        .hero-content { max-width: 800px; border-left: 5px solid var(--accent); padding-left: 30px; position: relative; z-index: 2; }
         .hero-content h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 25px; color: var(--text-light); }
         .hero-content span.highlight { color: var(--accent); font-style: italic; }
         .hero-content p { font-size: 1.3rem; color: #ddd; margin-bottom: 40px; font-weight: 300; }
 
         /* BUTONLAR */
-        .gold-btn {
-            display: inline-block;
-            padding: 15px 45px;
-            background: linear-gradient(45deg, var(--accent), #d4af37);
-            color: #000;
-            font-weight: 600;
-            text-decoration: none;
-            letter-spacing: 1px;
-            border-radius: 2px;
-            transition: 0.4s ease;
-            box-shadow: 0 5px 15px rgba(203, 163, 103, 0.3);
-        }
+        .gold-btn { display: inline-block; padding: 15px 45px; background: linear-gradient(45deg, var(--accent), #d4af37); color: #000; font-weight: 600; text-decoration: none; letter-spacing: 1px; border-radius: 2px; transition: 0.4s ease; box-shadow: 0 5px 15px rgba(203, 163, 103, 0.3); }
         .gold-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(203, 163, 103, 0.6); }
         .outline-btn { padding: 10px 25px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; font-weight: 500; transition: 0.3s; }
         .outline-btn:hover { background: var(--accent); color: #000; }
@@ -95,7 +90,6 @@
         .filter-tab.active, .filter-tab:hover { color: var(--accent); }
         .filter-tab.active::after { width: 100%; }
 
-        /* Galeri Grid */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 30px; }
         .gallery-item { position: relative; height: 320px; overflow: hidden; border-radius: 4px; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); filter: grayscale(10%); }
@@ -107,44 +101,22 @@
         .item-details p { color: var(--text-light); font-size: 0.95rem; transform: translateY(20px); transition: 0.4s 0.2s; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 10px; display: inline-block; }
         .gallery-item:hover h3, .gallery-item:hover p { transform: translateY(0); }
 
-        /* FOOTER */
         footer { background: #080808; padding: 80px 8%; text-align: center; border-top: 1px solid rgba(203, 163, 103, 0.2); margin-top: 50px; }
         .footer-content .logo { font-size: 2.5rem; margin-bottom: 30px; display: inline-block;}
         .footer-info p { color: var(--text-muted); margin-bottom: 10px; font-size: 1.1rem; }
         .footer-info i { color: var(--accent); margin-right: 15px; width: 20px;}
         .copyright { margin-top: 50px; font-size: 0.8rem; color: #555; }
-
-        /* WHATSAPP FLOAT */
         .whatsapp-float { position: fixed; bottom: 40px; right: 40px; background: linear-gradient(45deg, #25d366, #128C7E); color: #fff; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; box-shadow: 0 10px 20px rgba(0,0,0,0.4); z-index: 1001; transition: 0.3s; border: 2px solid rgba(255,255,255,0.1); text-decoration: none; }
         .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(37, 211, 102, 0.5); }
 
-        /* MOBİL UYUM (DÜZELTİLMİŞ TEMİZ KOD) */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.2rem; }
             .gallery-grid { grid-template-columns: 1fr; }
             .section-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-            
-            /* Mobilde menüleri yana kaydırma */
-            .filter-tabs {
-                width: 100%;
-                justify-content: flex-start;
-                overflow-x: auto;
-                padding-bottom: 15px;
-                white-space: nowrap;
-            }
+            .filter-tabs { width: 100%; justify-content: flex-start; overflow-x: auto; padding-bottom: 15px; white-space: nowrap; }
             .filter-tabs::-webkit-scrollbar { display: none; }
-            
-            .filter-tab {
-                background: rgba(255,255,255,0.1);
-                padding: 10px 20px;
-                border-radius: 20px;
-                font-size: 0.9rem;
-                flex-shrink: 0;
-            }
-            .filter-tab.active {
-                background: var(--accent);
-                color: #000;
-            }
+            .filter-tab { background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 20px; font-size: 0.9rem; flex-shrink: 0; }
+            .filter-tab.active { background: var(--accent); color: #000; }
             .filter-tab::after { display: none; }
         }
     </style>
@@ -159,6 +131,8 @@
     </header>
 
     <section class="hero">
+        <img id="hero-bg" class="hero-bg-img" src="./assets/kapak.jpg" alt="Kapak Resmi">
+        
         <div class="hero-content">
             <h1>Karaburun'da Estetik <br> <span class="highlight">ve Güvenin İmzası.</span></h1>
             <p>ÇEKEN İNŞAAT güvencesiyle; kişiye özel demir tasarım, lüks tadilat ve anahtar teslim inşaat projeleri.</p>
@@ -201,46 +175,55 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-<script>
-        const container = document.getElementById('gallery-container');
-        const totalPhotos = 66; 
-
-        // Bu fonksiyon resim yüklenemezse sıradaki uzantıyı dener
-        window.handleImageError = function(img, index, attempt = 0) {
-            const extensions = ['.jpg', '.jpeg', '.JPG', '.JPEG', '.png']; // Denenecek uzantılar
-            
-            if (attempt < extensions.length - 1) {
+    <script>
+        // --- 1. KAPAK FOTOĞRAFI MOTORU ---
+        // Kapak fotoğrafı için jpg, jpeg, png hepsini dener
+        const heroImg = document.getElementById('hero-bg');
+        
+        function tryLoadHero(attempt = 0) {
+            const extensions = ['.jpg', '.jpeg', '.JPG', '.JPEG', '.png'];
+            if (attempt < extensions.length) {
                 // Sıradaki uzantıyı dene
+                const nextExt = extensions[attempt];
+                // Eğer ilk deneme değilse kaynağı değiştir
+                if (attempt > 0) heroImg.src = `./assets/kapak${nextExt}`;
+                
+                heroImg.onerror = function() {
+                    tryLoadHero(attempt + 1); // Bulamazsa bir sonrakini dene
+                };
+            }
+        }
+        // Başlat
+        tryLoadHero(0);
+
+
+        // --- 2. GALERİ FOTOĞRAF MOTORU (78 ADET) ---
+        const container = document.getElementById('gallery-container');
+        const totalPhotos = 78; 
+
+        // Galeri resimleri için hata yakalayıcı
+        window.handleGalleryError = function(img, index, attempt = 0) {
+            const extensions = ['.jpg', '.jpeg', '.JPG', '.JPEG', '.png'];
+            if (attempt < extensions.length - 1) {
                 const nextExt = extensions[attempt + 1];
                 img.src = `./assets/1 (${index})${nextExt}`;
-                // Hata yakalayıcıyı güncelle (bir sonraki deneme için)
                 img.onerror = function() {
-                    handleImageError(img, index, attempt + 1);
+                    handleGalleryError(img, index, attempt + 1);
                 };
             } else {
-                // Hiçbir uzantıda bulunamadıysa kutuyu komple sil (Boşluk kalmasın)
                 img.closest('.gallery-item').remove();
-                console.warn(`Proje ${index} için görsel bulunamadı.`);
             }
         };
 
-        for (let i = 1; i <= totalPhotos; i++) {
+        // Döngü 2'den başlıyor (1 numarayı kapak için ayırdık diye varsaydık ama senin dosya adın kapak.jpg ise sorun yok)
+        for (let i = 2; i <= totalPhotos; i++) {
             
-            // KATEGORİ AYARLARI (Senin belirlediğin aralıklar)
             let category = 'insaat';
             let label = 'Anahtar Teslim İnşaat';
             
-            if (i <= 22) { 
-                category = 'demir'; 
-                label = 'Demir & Ferforje'; 
-            } 
-            else if (i <= 44) { 
-                category = 'tadilat'; 
-                label = 'Tadilat & Dekorasyon'; 
-            }
+            if (i <= 22) { category = 'demir'; label = 'Demir & Ferforje'; } 
+            else if (i <= 44) { category = 'tadilat'; label = 'Tadilat & Dekorasyon'; }
             
-            // Varsayılan olarak ilk .jpg deniyoruz. 
-            // Bulamazsa yukarıdaki 'handleImageError' devreye girip diğerlerini deneyecek.
             const fileName = `1 (${i}).jpg`; 
 
             const html = `
@@ -248,7 +231,7 @@
                     <img src="./assets/${fileName}" 
                          loading="lazy" 
                          alt="Proje ${i}"
-                         onerror="handleImageError(this, ${i})">
+                         onerror="handleGalleryError(this, ${i})">
                     <div class="item-details">
                         <h3>Proje No: ${i}</h3>
                         <p>${label}</p>
@@ -258,15 +241,12 @@
             container.innerHTML += html;
         }
 
-        // FİLTRELEME FONKSİYONU
         function filterGallery(cat, btn) {
-            // Buton rengini ayarla
             document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
             const items = document.querySelectorAll('.gallery-item');
             items.forEach(item => {
-                // Animasyonlu geçiş
                 item.style.opacity = '0';
                 item.style.transform = 'scale(0.95)';
                 setTimeout(() => {
